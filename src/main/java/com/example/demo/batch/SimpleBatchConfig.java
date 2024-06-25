@@ -16,13 +16,12 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
 @RequiredArgsConstructor
-@EnableBatchProcessing
 public class SimpleBatchConfig {
 
     @Bean
     public Job myjob(JobRepository jobRepository, PlatformTransactionManager platformTransactionManager) {
-        System.out.println("myjob メソッドを実行");
-        return new JobBuilder("myjob", jobRepository)
+        System.out.println("myJob メソッドを実行");
+        return new JobBuilder("myJob", jobRepository)
                 .start(helloStep(jobRepository, platformTransactionManager))
                 .next(worldStep(jobRepository, platformTransactionManager))
                 .build();
