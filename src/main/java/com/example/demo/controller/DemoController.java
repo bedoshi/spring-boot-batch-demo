@@ -13,6 +13,8 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
+
 @RestController
 public class DemoController {
     @Autowired
@@ -28,7 +30,7 @@ public class DemoController {
         jobLauncher.run(
                 simpleBatchConfig.myjob(jobRepository, platformTransactionManager),
                 new JobParametersBuilder()
-                        .addString("dummy", "dummy").toJobParameters()
+                        .addString("dummy", LocalDateTime.now().toString()).toJobParameters()
         );
         return "OK";
     }
