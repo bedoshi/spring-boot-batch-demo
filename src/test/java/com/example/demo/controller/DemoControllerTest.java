@@ -17,6 +17,6 @@ public class DemoControllerTest {
     @Test
     public void runTest() throws Exception {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(target).build();
-        mockMvc.perform(get("/")).andExpect(status().isOk());
+        mockMvc.perform(get("/job")).andExpect(status().isOk());
     }
 }
