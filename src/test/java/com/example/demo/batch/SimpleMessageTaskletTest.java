@@ -1,2 +1,28 @@
-package com.example.demo.batch;public class SimpleMessageTaskletTest {
+package com.example.demo.batch;
+
+import com.example.demo.service.TimeService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.batch.core.JobExecution;
+import org.springframework.batch.core.StepContribution;
+import org.springframework.batch.core.scope.context.ChunkContext;
+import org.springframework.batch.repeat.RepeatStatus;
+import org.springframework.batch.test.JobLauncherTestUtils;
+import org.springframework.batch.test.context.SpringBatchTest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.SpyBean;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.verify;
+
+//@SpringBatchTest
+@SpringBootTest(classes = { SimpleBatchConfig.class })
+public class SimpleMessageTaskletTest {
+
+    @Test
+    public void test() {
+        // do nothing.
+    }
+
 }
