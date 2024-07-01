@@ -16,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 @SpringBatchTest
@@ -30,10 +31,13 @@ public class SimpleMessageTaskletTest {
 
     @Test
     public void testJob() throws Exception {
+        // action
         JobExecution jobExecution = this.jobLauncherTestUtils.launchJob(
                 new JobParametersBuilder()
                         .addString("message", "test")
                         .toJobParameters());
+        // verify
         assertEquals("COMPLETED", jobExecution.getExitStatus().getExitCode());
+        verify(timeService, times(3)).getCurrentTime(); // 3steps. And it calls once per a step.
     }
 }
