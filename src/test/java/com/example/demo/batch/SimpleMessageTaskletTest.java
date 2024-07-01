@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.batch.core.JobExecution;
+import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.repeat.RepeatStatus;
@@ -24,9 +25,15 @@ public class SimpleMessageTaskletTest {
     @Autowired
     private JobLauncherTestUtils jobLauncherTestUtils;
 
+    @SpyBean
+    private TimeService timeService;
+
     @Test
     public void testJob() throws Exception {
-        JobExecution jobExecution = this.jobLauncherTestUtils.launchJob();
+        JobExecution jobExecution = this.jobLauncherTestUtils.launchJob(
+                new JobParametersBuilder()
+                        .addString("message", "test")
+                        .toJobParameters());
         assertEquals("COMPLETED", jobExecution.getExitStatus().getExitCode());
     }
 }
