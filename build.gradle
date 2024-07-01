@@ -35,6 +35,10 @@ dependencies {
 
 	// https://mvnrepository.com/artifact/com.h2database/h2
 	implementation 'com.h2database:h2:2.2.224'
+
+	// https://mvnrepository.com/artifact/org.springframework.batch/spring-batch-test
+	testImplementation 'org.springframework.batch:spring-batch-test'
+
 }
 
 tasks.named('test') {
