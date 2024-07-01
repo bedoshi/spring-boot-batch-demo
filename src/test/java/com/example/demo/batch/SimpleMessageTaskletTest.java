@@ -1,6 +1,7 @@
 package com.example.demo.batch;
 
 import com.example.demo.service.TimeService;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.batch.core.JobExecution;
@@ -24,8 +25,8 @@ public class SimpleMessageTaskletTest {
     private JobLauncherTestUtils jobLauncherTestUtils;
 
     @Test
-    public void test() {
-        // do nothing.
+    public void testJob() throws Exception {
+        JobExecution jobExecution = this.jobLauncherTestUtils.launchJob();
+        assertEquals("COMPLETED", jobExecution.getExitStatus().getExitCode());
     }
-
 }
