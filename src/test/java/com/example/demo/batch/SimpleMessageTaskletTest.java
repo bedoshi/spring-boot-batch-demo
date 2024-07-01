@@ -16,9 +16,12 @@ import org.springframework.boot.test.mock.mockito.SpyBean;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 
-//@SpringBatchTest
+@SpringBatchTest
 @SpringBootTest(classes = { SimpleBatchConfig.class })
 public class SimpleMessageTaskletTest {
+
+//    @Autowired
+//    private JobLauncherTestUtils jobLauncherTestUtils;
 
     @Test
     public void test() {
