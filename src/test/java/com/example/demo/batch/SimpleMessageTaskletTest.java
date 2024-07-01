@@ -20,8 +20,8 @@ import static org.mockito.Mockito.verify;
 @SpringBootTest(classes = { SimpleBatchConfig.class })
 public class SimpleMessageTaskletTest {
 
-//    @Autowired
-//    private JobLauncherTestUtils jobLauncherTestUtils;
+    @Autowired
+    private JobLauncherTestUtils jobLauncherTestUtils;
 
     @Test
     public void test() {
