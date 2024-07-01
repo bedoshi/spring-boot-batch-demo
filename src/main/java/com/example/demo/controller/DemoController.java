@@ -28,7 +28,7 @@ public class DemoController {
     @GetMapping("/job")
     public String runJob() throws JobInstanceAlreadyCompleteException, JobExecutionAlreadyRunningException, JobParametersInvalidException, JobRestartException {
         jobLauncher.run(
-                simpleBatchConfig.myjob(jobRepository, platformTransactionManager),
+                simpleBatchConfig.messageJob(jobRepository, platformTransactionManager),
                 new JobParametersBuilder()
                         .addString("dummy", LocalDateTime.now().toString()).toJobParameters()
         );
